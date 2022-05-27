@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import {Customer} from '@prisma/client'
 import { CustomersService } from './customers.service';
+import { CreateCustomerDTO} from './dto/createCustomer.dto';
 
 @Controller('customers')
 export class CustomersController {
@@ -8,6 +9,12 @@ export class CustomersController {
 
     @Get()
     async getAllCustomers(): Promise<Customer[]> {
-        return this.customersService.getAllCustomers();
+        return this.customersService.getAllCustomers()
     }
+
+    @Post()
+    async createCustomer(@Body() data: CreateCustomerDTO): Promise<Customer>{
+        return this.customersService.createCustomer(data);
+    }
+    
 }
