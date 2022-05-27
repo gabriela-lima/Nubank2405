@@ -5,6 +5,7 @@ import { UpdateHelloDTO } from './dto/updateHello.dto';
 
 @Controller()
 export class AppController {
+  //dependency injection (injecao de dependencia)
   constructor(private readonly appService: AppService) {}
 
   @Get()
